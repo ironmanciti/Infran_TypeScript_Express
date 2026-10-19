@@ -29,6 +29,6 @@ npm install
 ├─ server/           Section 10: Express 서버 (강의 예제 → 실전 응용 문제의 할 일 API)
 │  ├─ package.json   dependencies, dev·build·start·typecheck 스크립트
 │  ├─ tsconfig.json  Node.js용 설정 (NodeNext, outDir dist)
-│  └─ src/main.ts    시작 파일
+│  └─ src/main.ts    97강 샘플(첫 API). 98강 실습부터 AI가 새 코드로 바꿔 씀
 └─ client/           Section 11에서 Vite 프로젝트로 추가 (프론트엔드)
 ```
