@@ -1,6 +1,6 @@
-// 97강 샘플: Express로 만든 첫 API
+// Express로 만든 첫 API 샘플
 // 실행: 저장소 루트에서 npm run dev:server
-// 98강 실습부터는 AI에게 이 파일을 새 코드로 바꿔 쓰게 합니다.
+// 이후 실습에서는 AI에게 이 파일을 새 코드로 바꿔 쓰게 합니다.
 import express, { type Application, type Request, type Response } from "express";
 
 const app: Application = express();
