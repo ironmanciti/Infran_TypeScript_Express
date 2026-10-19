@@ -1,0 +1,15 @@
+{
+  "name": "infran-typescript-express",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "server"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev -w server",
+    "typecheck": "npm run typecheck --workspaces"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
