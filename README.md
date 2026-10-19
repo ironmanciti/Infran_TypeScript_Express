@@ -20,6 +20,7 @@ npm install
 | 명령 | 내용 | 주소 |
 |---|---|---|
 | `npm run dev:server` | Express 개발 서버 (저장하면 자동 재시작) | http://localhost:3000 |
+| `npm run dev:example` | 첫 API 샘플 실행 (server/src/examples/first-api.ts) | http://localhost:3000 |
 | `npm run typecheck` | 모든 워크스페이스 타입 검사 | |
 
 ## 폴더 구성
@@ -27,8 +28,10 @@ npm install
 ```
 ├─ package.json      workspaces, 공통 스크립트, typescript
 ├─ server/           Section 10: Express 서버 (강의 예제 → 실전 응용 문제의 할 일 API)
-│  ├─ package.json   dependencies, dev·build·start·typecheck 스크립트
+│  ├─ package.json   dependencies, dev·example·build·start·typecheck 스크립트
 │  ├─ tsconfig.json  Node.js용 설정 (NodeNext, outDir dist)
-│  └─ src/main.ts    첫 API 샘플. 이후 실습에서 AI가 새 코드로 바꿔 씀
+│  └─ src/
+│     ├─ main.ts                 실습 시작 파일 (AI가 작성)
+│     └─ examples/first-api.ts   첫 API 샘플 (읽고 실행만)
 └─ client/           Section 11에서 Vite 프로젝트로 추가 (프론트엔드)
 ```
