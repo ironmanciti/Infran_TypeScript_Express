@@ -3,12 +3,21 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "server"
+    "server",
+    "todo/server",
+    "todo/client"
   ],
   "scripts": {
     "dev:server": "npm run dev -w server",
     "dev:example": "npm run example -w server",
+    "dev:todo": "npm run dev -w todo/server",
+    "dev:todo-client": "npm run dev -w todo/client",
+    "build:todo": "npm run build -w todo/client && npm run build -w todo/server",
+    "start:todo": "npm start -w todo/server",
     "typecheck": "npm run typecheck --workspaces"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "devDependencies": {
     "typescript": "^7.0.2"

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",             // 변환 결과의 JavaScript 문법 버전
+    "module": "NodeNext",           // Node.js의 모듈 규칙을 따름
+    "moduleResolution": "NodeNext", // import 경로를 찾는 방식
+    "outDir": "dist",               // tsc가 만든 .js를 둘 폴더
+    "rootDir": "src",               // 소스 .ts 파일이 있는 폴더
+    "strict": true,                 // 엄격한 타입 검사 (null 검사 포함)
+    "verbatimModuleSyntax": true,   // 타입만 가져올 때 import type 필수
+    "esModuleInterop": true,        // CommonJS 패키지도 default import
+    "skipLibCheck": true,           // 라이브러리 .d.ts 검사 생략 (속도)
+    "types": ["node"]               // Node.js API 타입 (process 등)
+  },
+  "include": ["src/**/*.ts"]        // 컴파일 대상: src 아래 모든 .ts
+}
