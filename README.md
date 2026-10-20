@@ -29,9 +29,22 @@ npm install
 
 서버 세 개가 모두 3000번을 쓰므로 한 번에 하나만 실행합니다.
 
+## 컨텍스트 파일
+
+AI 코딩 도구가 작업을 시작할 때 자동으로 읽는 프로젝트 규칙입니다. 강사가 미리 만들어 두었으므로 새로 만들 필요는 없습니다.
+
+| 파일 | 읽는 도구 | 내용 |
+|---|---|---|
+| `AGENTS.md` | Codex | 규칙 원본 (기술 스택, 폴더, 규칙, 명령, 할 일 프로젝트) |
+| `CLAUDE.md` | Claude Code | `@AGENTS.md` 한 줄로 원본을 불러옴 |
+| `GEMINI.md` | Gemini CLI | `@./AGENTS.md` 한 줄로 원본을 불러옴 |
+
+규칙을 바꿀 때는 `AGENTS.md`만 고칩니다.
+
 ## 폴더 구성
 
 ```
+├─ AGENTS.md           컨텍스트 파일 원본 (CLAUDE.md, GEMINI.md가 참조)
 ├─ package.json        workspaces, 공통 스크립트, typescript
 ├─ server/             Section 10 강의 예제 (도서 API)
 │  ├─ package.json     dependencies, dev·example·build·start·typecheck 스크립트
