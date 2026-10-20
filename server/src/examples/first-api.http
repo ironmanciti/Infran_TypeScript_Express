@@ -1,0 +1,53 @@
+# first-api.ts 테스트 요청 모음 (VS Code REST Client 확장)
+# 먼저 서버 실행: 저장소 루트에서 npm run dev:example
+# 각 요청 위의 "Send Request"를 눌러 실행합니다.
+
+@baseUrl = http://localhost:3000
+
+### ===== 정상 경우 =====
+
+### 1. GET / → 200, HTML
+GET {{baseUrl}}/
+
+### 2. GET /users → 200, 사용자 목록 JSON
+GET {{baseUrl}}/users
+
+### 3. POST /users → 201, 보낸 JSON을 그대로 돌려줌
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Mike"
+}
+
+### ===== 오류 경우 =====
+
+### 4. 없는 경로 → 404, HTML "Cannot GET /nope"
+GET {{baseUrl}}/nope
+
+### 5. 지원하지 않는 메서드 → 404, HTML "Cannot PUT /users"
+PUT {{baseUrl}}/users
+
+### 6. 깨진 JSON → 400, HTML 에러 페이지 (스택 트레이스 노출)
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{"name":
+
+### 7. Content-Type 헤더 없음 → 201, 빈 응답 (req.body가 undefined)
+POST {{baseUrl}}/users
+
+{"name":"Mike"}
+
+### 8. 본문 없음 → 201, 빈 응답 (검증 없음)
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+### 9. name 타입 오류 → 201, {"name":123} (검증 없음)
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": 123
+}
