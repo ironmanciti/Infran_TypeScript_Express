@@ -1,0 +1,201 @@
+/* 할 일 화면: 어두운 카드 레이아웃 (layout.png 기준) */
+:root {
+  --bg: #121212;
+  --card: #1f1f1f;
+  --border: #555;
+  --text: #e8e8e8;
+  --muted: #9a9a9a;
+  --primary: #3a5a8c;
+  --button: #4a4a4a;
+  --danger: #6b2a2a;
+  --danger-border: #d9534f;
+  --due: #8bc47a;
+  --overdue: #e06464;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Malgun Gothic", sans-serif;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  padding: 24px;
+  border-radius: 28px;
+  background: var(--card);
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+#todo-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+#due-date-input {
+  padding: 8px 10px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: var(--due);
+  font-size: 1rem;
+  color-scheme: dark; /* 달력 아이콘을 밝게 */
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: var(--button);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+/* 요청 중 비활성화된 버튼과 체크박스 */
+.btn:disabled,
+.todo-toggle:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.btn-primary {
+  background: var(--primary);
+  font-weight: 600;
+}
+
+/* 필터(5단계)는 왼쪽, 오류 팝업은 오른쪽 */
+.status-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  margin: 12px 0;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-right: auto; /* 팝업이 숨겨져도 필터는 왼쪽에 */
+}
+
+.filter-button {
+  min-width: 80px;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  background: #2a2a2a;
+}
+
+.filter-button.selected {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+
+.error-popup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 16px;
+  border: 2px dashed var(--danger-border);
+  border-radius: 6px;
+  background: var(--danger);
+}
+
+/* display: flex 가 hidden 속성을 덮어쓰지 않도록 */
+.error-popup[hidden] {
+  display: none;
+}
+
+.error-close {
+  border: none;
+  background: none;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.todo-container {
+  list-style: none;
+  margin: 0;
+  padding: 8px 12px;
+  min-height: 60px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+}
+
+.btn-danger {
+  background: var(--danger);
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 4px;
+}
+
+.todo-toggle {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.todo-title {
+  flex: 1;
+  word-break: break-all;
+}
+
+.todo-item.completed .todo-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.todo-due-date {
+  min-width: 96px;
+  color: var(--due);
+  font-variant-numeric: tabular-nums;
+}
+
+.todo-due-date.overdue {
+  color: var(--overdue);
+}
+
+.todo-delete {
+  padding: 6px 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  color: var(--muted);
+}
