@@ -2,6 +2,7 @@
 // 실행: 저장소 루트에서 npm run dev:todo (http://localhost:3000)
 import cors from "cors";
 import express, { type Application, type NextFunction, type Request, type Response } from "express";
+import path from "node:path";
 import { errorHandler } from "./error-handler.js";
 import { todosRouter } from "./todos-router.js";
 
@@ -21,9 +22,17 @@ app.use(express.json()); // 요청 본문의 JSON을 파싱해 req.body에 넣�
 // 할 일 API는 todos-router.ts에서 처리
 app.use("/api/todos", todosRouter);
 
+// 배포용: 빌드된 화면(todo/client/dist)을 정적 파일로 제공
+// src(개발)와 dist(배포) 모두 두 단계 위가 todo/ 폴더
+const clientDist: string = path.resolve(import.meta.dirname, "../../client/dist");
+app.use(express.static(clientDist));
+
 // 오류 처리 미들웨어는 모든 라우트 뒤, 맨 마지막에 등록
 app.use(errorHandler);
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// 배포 환경이 정한 포트를 쓰고, 없으면 3000
+const port: number = Number(process.env.PORT) || 3000;
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
