@@ -37,7 +37,7 @@ AI 코딩 도구가 작업을 시작할 때 자동으로 읽는 프로젝트 규
 |---|---|---|
 | `AGENTS.md` | Codex | 규칙 원본 (기술 스택, 폴더, 규칙, 명령, 할 일 프로젝트) |
 | `CLAUDE.md` | Claude Code | `@AGENTS.md` 한 줄로 원본을 불러옴 |
-| `GEMINI.md` | Gemini CLI | `@./AGENTS.md` 한 줄로 원본을 불러옴 |
+| `GEMINI.md` | Antigravity | `@./AGENTS.md` 한 줄로 원본을 불러옴 (AGENTS.md도 직접 읽음) |
 
 규칙을 바꿀 때는 `AGENTS.md`만 고칩니다.
 
