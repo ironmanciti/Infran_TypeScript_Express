@@ -42,7 +42,6 @@ client(Vite vanilla-ts)로 구성된다.
 - 요구사항은 todo/REQUIREMENTS.md 를 따른다
 
 ### API (todo/server, /api/todos)
-GET /, POST / {title, dueDate?}, PATCH /:id {title?, completed?, dueDate?}, DELETE /:id
-- 할 일: id(cuid2 문자열), title(공백 제거 후 1~100자), completed(boolean, 기본 false), dueDate(YYYY-MM-DD 문자열 또는 null, 기본 null)
-- GET / 은 마감일이 빠른 순으로 응답, 마감일이 없는 항목은 맨 뒤
+GET /, POST / {title}, PATCH /:id {title?, completed?}, DELETE /:id
+- 할 일: id(cuid2 문자열), title(공백 제거 후 1~100자), completed(boolean, 기본 false)
 - 상태 코드: 검증 실패 400, 없는 id 404, 생성 201, 삭제 204
