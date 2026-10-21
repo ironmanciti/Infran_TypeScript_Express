@@ -6,37 +6,7 @@
     <title>할 일 목록</title>
   </head>
   <body>
-    <main class="card">
-      <!-- 입력 폼: 할 일 입력, 마감일, 추가(제출), 입력 지우기 -->
-      <form id="todo-form" class="input-row" novalidate>
-        <input id="todo-input" type="text" placeholder="할 일을 입력하세요" autocomplete="off" />
-        <input id="due-date-input" type="date" aria-label="마감일" />
-        <button id="add-button" class="btn btn-primary" type="submit">Add</button>
-        <button id="clear-button" class="btn" type="button">Clear</button>
-      </form>
-
-      <!-- 상태 필터와 오류 팝업(평소에는 숨김) -->
-      <div class="status-row">
-        <div class="filters">
-          <button id="filter-all" class="btn filter-button selected" type="button">전체</button>
-          <button id="filter-active" class="btn filter-button" type="button">진행 중</button>
-          <button id="filter-completed" class="btn filter-button" type="button">완료</button>
-        </div>
-        <div id="error-popup" class="error-popup" role="alert" hidden>
-          <span id="error-message"></span>
-          <button id="error-close" class="error-close" type="button" aria-label="닫기">×</button>
-        </div>
-      </div>
-
-      <!-- 할 일 목록 -->
-      <ul id="todo-container" class="todo-container"></ul>
-
-      <!-- 하단: 남은 개수, 완료 항목 삭제 -->
-      <footer class="footer">
-        <span id="items-left">0 items left</span>
-        <button id="clear-completed" class="btn" type="button">Clear completed</button>
-      </footer>
-    </main>
+    <!-- 화면 구조는 Section 11에서 AI가 작성합니다 -->
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
