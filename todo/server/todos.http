@@ -57,7 +57,7 @@ Content-Type: application/json
 ### ===== 5단계: 상태 필터 =====
 # 먼저 목록에서 할 일 하나의 id를 복사해 아래 @id 에 넣고 7번으로 완료 처리합니다.
 
-@id = y6et41hnnwbvuau2zdxzblga
+@id = 여기에_id_붙여넣기
 
 ### 7. 하나를 완료로 바꿈 → 200, completed가 true
 PATCH {{baseUrl}}/{{id}}
