@@ -32,10 +32,18 @@
 - 서버 응답은 Zod로 검증한다
 - 작업 후 저장소 루트에서 npm run typecheck 가 통과한다
 
-## 구현 순서
+## 구현 순서와 단계별 확인
 
-1. 화면 뼈대
-2. API 연결
-3. 렌더링과 이벤트
-4. 마감일 (server를 먼저 구현하고 curl로 확인한 뒤 client)
-5. 상태 필터 (server를 먼저 구현하고 curl로 확인한 뒤 client)
+PLAN.md의 각 단계 완료 조건에는 아래 확인 방법을 그대로 넣는다.
+서버 확인 요청은 todo/server/todos.http 에 있다.
+
+| 단계 | 만들 것 | 확인 방법 |
+|---|---|---|
+| 1. 화면 뼈대 | index.html, src/style.css, src/main.ts의 getElement와 elements | localhost:5173에서 layout.png와 같은 배치가 보이고, Console 탭에 오류가 없다 |
+| 2. API 연결 | src/api.ts (request, todoSchema, 함수 네 개) | main.ts에서 getTodos()를 호출해 결과를 console.log로 출력한다(3단계에서 화면 표시로 바뀐다). Console 탭에 배열이 찍히고, Network 탭에서 /api/todos가 200 또는 304 |
+| 3. 렌더링과 이벤트 | 목록 그리기, 추가·체크·삭제·Clear, 오류 팝업 | 화면에서 추가·체크·삭제·Clear가 동작하고, 새로고침해도 그대로 남는다 |
+| 4. 마감일 | server를 먼저 구현하고 REST Client나 curl로 확인한 뒤 client | 잘못된 날짜는 400, 목록은 마감일이 빠른 순, 화면에서 지난 마감일은 빨간색 |
+| 5. 상태 필터 | server를 먼저 구현하고 REST Client나 curl로 확인한 뒤 client | ?completed=abc는 400, 필터 버튼을 누를 때마다 Network 탭에 ?completed= 요청 |
+
+- 모든 단계: 저장소 루트에서 npm run typecheck 통과
+- 마지막 점검: 빈 입력은 요청 없이 팝업, 서버를 끄고 추가하면 메시지, Add를 두 번 눌러도 요청 1건
