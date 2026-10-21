@@ -1,13 +1,19 @@
 // 할 일 API의 시작 파일입니다.
 // 실행: 저장소 루트에서 npm run dev:todo (http://localhost:3000)
-import express, { type Application } from "express";
 import cors from "cors";
-import { todosRouter } from "./todos-router.js";
+import express, { type Application, type NextFunction, type Request, type Response } from "express";
 import { errorHandler } from "./error-handler.js";
+import { todosRouter } from "./todos-router.js";
 
 const app: Application = express();
 
-// 프런트엔드 개발 서버(localhost:5173)의 요청만 허용
+// 로그 미들웨어: 모든 요청의 메서드와 경로를 출력
+app.use((req: Request, _res: Response, next: NextFunction) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
+// Vite 개발 서버(localhost:5173)에서 오는 요청만 허용
 app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use(express.json()); // 요청 본문의 JSON을 파싱해 req.body에 넣음

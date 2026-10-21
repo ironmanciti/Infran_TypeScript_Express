@@ -4,10 +4,10 @@ import type { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 
 export function errorHandler(err: unknown, _req: Request, res: Response, _next: NextFunction) {
-  // Zod 검증 실패 → 400, 필드별 오류
+  // Zod 검증 실패(요청 본문, 쿼리) → 400, 필드별 오류
   if (err instanceof z.ZodError) {
     res.status(400).json({
-      message: "요청 본문이 올바르지 않습니다",
+      message: "요청 값이 올바르지 않습니다",
       errors: z.flattenError(err).fieldErrors,
     });
     return;
